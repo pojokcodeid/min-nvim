@@ -1,0 +1,25 @@
+{
+  "plugins": {
+    "LuaSnip": {
+      "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
+      "src": "https://github.com/L3MON4D3/LuaSnip",
+      "version": "2.0.0 - 3.0.0"
+    },
+    "blink.cmp": {
+      "rev": "49d39fda6350d7f789d1da1053e86c9e256f8108",
+      "src": "https://github.com/saghen/blink.cmp"
+    },
+    "blink.lib": {
+      "rev": "f55df8a6e0a7acccf45ef0ffbb4ce46110fcf7d0",
+      "src": "https://github.com/saghen/blink.lib"
+    },
+    "friendly-snippets": {
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
+    "mini.misc": {
+      "rev": "0524e8f7191782609374df6bcf9e607021ceccb1",
+      "src": "https://github.com/nvim-mini/mini.misc"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+require("global")
 require("options")
 require("lsp")
 require("colorscheme")
@@ -11,3 +12,4 @@ require("grep")
 require("diagnostics")
 require("formating")
 require("keymaps")
+require("plugins")
