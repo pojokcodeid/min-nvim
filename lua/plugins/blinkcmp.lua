@@ -90,21 +90,28 @@ Later(function()
 		completion = {
 			accept = { auto_brackets = { enabled = true } },
 			menu = {
-				-- min_width = 15,
-				-- max_height = 10,
-				-- n → north (atas)
-				-- s → south (bawah)
+				min_width = 25, -- Memastikan lebar popup memadai
 				direction_priority = { "s", "n" },
 				border = "rounded",
 				winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None",
 				draw = {
-					padding = 2,
-					gap = 1,
+					padding = { 0, 3 }, -- 0 spasi di kiri, 1 spasi di kanan
+					gap = 2, -- Menambah spasi antar kolom agar teks tidak menumpuk
 					treesitter = { "lsp" },
 					columns = {
 						{ "kind_icon" },
-						{ "label", "label_description", gap = 1 },
+						{ "label", "label_description", gap = 3 },
 						{ "kind" },
+					},
+					components = {
+						kind_icon = {
+							text = function(ctx)
+								return ctx.kind_icon
+							end,
+						},
+						kind = {
+							ellipsis = false, -- Mencegah pemotongan string 'Snippet' menjadi 'Snippe'
+						},
 					},
 				},
 			},
@@ -114,11 +121,6 @@ Later(function()
 				window = {
 					border = "rounded",
 					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None",
-					-- max_width = 50,
-					-- e → east (kanan kursor)
-					-- w → west (kiri kursor)
-					-- n → north (atas)
-					-- s → south (bawah)
 					direction_priority = {
 						menu_north = { "e", "w" },
 						menu_south = { "e", "w" },
@@ -147,6 +149,7 @@ Later(function()
 			implementation = "lua",
 		},
 	})
+
 	-- :config snippets
 	require("luasnip.loaders.from_vscode").lazy_load()
 	-- :config custom snippets

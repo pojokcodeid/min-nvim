@@ -17,6 +17,10 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "indent-blankline.nvim": {
+      "rev": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d",
+      "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
+    },
     "mini.misc": {
       "rev": "0524e8f7191782609374df6bcf9e607021ceccb1",
       "src": "https://github.com/nvim-mini/mini.misc"
