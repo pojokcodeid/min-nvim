@@ -1,13 +1,11 @@
-Later(function()
-	vim.pack.add({
-		"https://github.com/lukas-reineke/indent-blankline.nvim",
-	})
+vim.pack.add({
+	"https://github.com/lukas-reineke/indent-blankline.nvim",
+})
 
-	require("ibl").setup({
-		indent = {
-			char = "│",
-			tab_char = "│",
-		},
-		scope = { enabled = false },
-	})
-end)
+require("ibl").setup({
+	indent = {
+		char = "│",
+		tab_char = "│",
+	},
+	scope = { enabled = false },
+})

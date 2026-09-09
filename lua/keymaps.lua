@@ -1,5 +1,5 @@
--- close all windows 
-vim.keymap.set("n","q","<cmd>q<cr>",{silent = true})
+-- close all windows
+vim.keymap.set("n", "q", "<cmd>q<cr>", { silent = true })
 -- Write and quit
 vim.keymap.set("n", "<leader>w", ":w<cr>", { silent = true })
 vim.keymap.set("n", "<leader>q", ":q<cr>", { silent = true })
@@ -40,3 +40,8 @@ keymap("n", "<M-Down>", "<cmd>m+<cr>", opts)
 keymap("i", "<M-Down>", "<cmd>m+<cr>", opts)
 keymap("n", "<M-Up>", "<cmd>m-2<cr>", opts)
 keymap("i", "<M-Up>", "<cmd>m-2<cr>", opts)
+
+-- Menyimpan file dengan Cmd+S di mode Normal, Insert, dan Visual
+vim.keymap.set({ "n", "i", "v" }, "<D-s>", "<Esc>:w<CR>", { desc = "Save file" })
+-- Menyimpan file dengan Ctrl+S (yang dipicu oleh Cmd+S dari terminal)
+vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<Esc>:w<CR>", { desc = "Save file" })

@@ -5,12 +5,12 @@ vim.api.nvim_set_hl(0, "StlMode", { fg = pms.fg, bg = vis.bg })
 vim.api.nvim_set_hl(0, "StlGit", { fg = dir.fg, bg = pms.bg })
 
 local modes = {
-	n = "NORMAL",
-	i = "INSERT",
-	v = "VISUAL",
+	n = "  ",
+	i = "  ",
+	v = " 󰷊 ",
 	V = "V-LINE",
 	["\22"] = "V-BLOCK",
-	c = "COMMAND",
+	c = "  ",
 	t = "TERMINAL",
 	R = "REPLACE",
 	s = "SELECT",
@@ -20,7 +20,7 @@ local modes = {
 
 function _G._statusline()
 	local mode = modes[vim.fn.mode()] or vim.fn.mode():upper()
-	local branch = vim.b.git_branch and "%#StlGit# " .. vim.b.git_branch .. " %*" or ""
+	local branch = vim.b.git_branch and "%#StlGit# " .. "" .. vim.b.git_branch .. " %*" or ""
 	local path = vim.b.rel_path or "%f"
 
 	local diag = ""
