@@ -323,3 +323,48 @@ end
 
 -- Create command
 vim.api.nvim_create_user_command("LspInfo", lsp_info, { desc = "Show comprehensive LSP information" })
+
+-- ====================================================================
+-- KUSTOMISASI USER COMMANDS UNTUK VIM.PACK (NEOVIM 0.12+)
+-- ====================================================================
+
+-- 1. :PackClean -> Menghapus folder plugin yang sudah tidak dideklarasikan di config
+vim.api.nvim_create_user_command('PackClean', function()
+    local unused_plugins = {}
+    
+    -- Mengambil daftar status seluruh plugin di disk menggunakan API bawaan
+    for _, plugin in ipairs(vim.pack.get()) do
+        if not plugin.active then
+            table.insert(unused_plugins, plugin.spec.name)
+        end
+    end
+
+    if #unused_plugins == 0 then
+        print("✓ Semua bersih! Tidak ada plugin usang di disk.")
+        return
+    end
+
+    -- Menampilkan konfirmasi pop-up sebelum menghapus
+    local message = "Hapus " .. #unused_plugins .. " plugin berikut dari disk?\n• " .. table.concat(unused_plugins, "\n• ")
+    local choice = vim.fn.confirm(message, "&Yes\n&No", 2)
+    
+    if choice == 1 then
+        vim.pack.del(unused_plugins) -- Menghapus dari disk & lockfile secara aman
+        print("✓ Berhasil menghapus plugin yang tidak digunakan.")
+    else
+        print(" Penghapusan dibatalkan.")
+    end
+end, {})
+
+-- 2. :PackUpdate -> Memeriksa dan memperbarui semua plugin ke versi terbaru (Membuka UI interaktif)
+vim.api.nvim_create_user_command('PackUpdate', function()
+    print(" Membuka buffer pembaruan vim.pack...")
+    vim.pack.update() -- Membuka UI konfirmasi bawaan dengan navigasi LSP
+end, {})
+
+-- 3. :PackSync -> Menyelaraskan versi plugin di disk agar sama persis dengan nvim-pack-lock.json
+-- (Sangat berguna setelah Anda melakukan `git pull` config dari komputer lain)
+vim.api.nvim_create_user_command('PackSync', function()
+    print(" Menyinkronkan seluruh plugin dengan lockfile...")
+    vim.pack.update(nil, { target = 'lockfile' }) -- Memaksa semua plugin mengikuti revisi lockfile
+end, {})

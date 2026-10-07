@@ -1,4 +1,6 @@
-require("plugins.blinkcmp")
-require("plugins.indentline")
-require("plugins.cmdline")
-require("plugins.autopairs")
+return{
+    require("plugins.treesitter"),
+    require("plugins.autopairs"),
+    require("plugins.blink"),
+    require("plugins.mason"),
+}

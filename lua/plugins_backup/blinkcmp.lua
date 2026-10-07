@@ -95,7 +95,7 @@ require("blink.cmp").setup({
 			winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None",
 			draw = {
 				padding = { 0, 3 }, -- 0 spasi di kiri, 1 spasi di kanan
-				gap = 2, -- Menambah spasi antar kolom agar teks tidak menumpuk
+				gap = 1, -- Menambah spasi antar kolom agar teks tidak menumpuk
 				treesitter = { "lsp" },
 				columns = {
 					{ "kind_icon" },
